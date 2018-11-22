@@ -1,0 +1,7 @@
+
+tsquid:UselessImportCheck	"DRemove this unused import 'org.springframework.jdbc.core.RowMapper'.(¦¬ÀÙùÿÿÿÿ8©®À‰ç,
+ƒsquid:UselessImportCheck"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8áÿÀ‰ç,
+vsquid:UselessImportCheck
+"FRemove this unused import 'org.springframework.stereotype.Repository'.(¦ýÍýüÿÿÿÿ8áÿÀ‰ç,
+usquid:UselessImportCheck"JRemove this unused import 'org.springframework.jdbc.core.ParameterMapper'.(ÚàëÍ8‰á¾‰ç,
+asquid:UselessImportCheck"6Remove this unused import 'javax.annotation.Resource'.(î¾Ì—8Æ½­‰ç,

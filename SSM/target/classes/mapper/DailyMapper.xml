@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.DailyMapper">
+    <resultMap id="BaseResultMap" type="com.entity.DailyEntity">
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="selectFields">id,name ,gender</sql>
+
+    <insert id="insertDaily" parameterType="DailyEntity">
+        insert into test_table(name,gender) values ('still test','female')
+    </insert>
+
+    <update id="updateDaily" parameterType="DailyEntity">
+        update test_table set name=#{name},gender=#{gender}
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <delete id="deleteDaily" parameterType="string">
+        delete from  test_table
+        <where>
+            id=#{id}
+        </where>
+    </delete>
+
+    <select id="query" resultMap="BaseResultMap" parameterType="com.entity.DailyEntityQueryInfo">
+        SELECT
+        <include refid="selectFields" />
+        FROM test_table
+    </select>
+
+</mapper>
