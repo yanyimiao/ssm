@@ -392,7 +392,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543066333218" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543066656580" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -684,7 +684,7 @@
       <workItem from="1542809906783" duration="2517000" />
       <workItem from="1543043622711" duration="814000" />
       <workItem from="1543044459151" duration="2540000" />
-      <workItem from="1543051033686" duration="7109000" />
+      <workItem from="1543051033686" duration="7379000" />
     </task>
     <servers />
   </component>
@@ -721,7 +721,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156044000" />
+    <option name="totallyTimeSpent" value="156314000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
