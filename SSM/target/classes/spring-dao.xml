@@ -4,7 +4,7 @@
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
@@ -14,8 +14,7 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/rabbit
-    http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd
-">
+    http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- 配置相关的properties-->
     <bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -38,6 +37,56 @@
     <bean class="org.springframework.amqp.rabbit.core.RabbitTemplate" id="rabbitTemplate">
         <constructor-arg ref="mqconnectionFactory"/>
     </bean>
+
+
+    <bean class="org.springframework.amqp.core.Queue" id="queue">
+        <constructor-arg index="0" value="testQueue"></constructor-arg>
+        <constructor-arg index="1" value="true"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+        <constructor-arg index="3" value="false"></constructor-arg>
+    </bean>
+    <bean class="org.springframework.amqp.core.DirectExchange" id="directExchange">
+        <constructor-arg index="0" value="TestExchange"></constructor-arg>
+        <constructor-arg index="1" value="true"></constructor-arg>
+        <constructor-arg index="2" value="false"></constructor-arg>
+    </bean>
+
+    <util:map id="arguments"></util:map>
+
+
+    <!-- 绑定交换器、队列 -->
+    <bean id="binding" class="org.springframework.amqp.core.Binding">
+        <constructor-arg index="0" value="testQueue"></constructor-arg>
+        <constructor-arg index="1" value="QUEUE"></constructor-arg>
+        <constructor-arg index="2" value="TestExchange"></constructor-arg>
+        <constructor-arg index="3" value="testQueue"></constructor-arg>
+        <constructor-arg index="4" value="#{arguments}"></constructor-arg>
+    </bean>
+
+    <!-- 用于接收消息的处理类 -->
+    <bean id="rmqConsumer" class="com.util.rabbit.RmqConsumer"></bean>
+
+    <bean class="org.springframework.amqp.support.converter.SimpleMessageConverter" id="serializerMessageConverter"></bean>
+    <bean id="messageListenerAdapter"
+          class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
+        <constructor-arg ref="rmqConsumer" />
+        <property name="defaultListenerMethod" value="rmqProducerMessage"></property>
+        <property name="messageConverter" ref="serializerMessageConverter"></property>
+    </bean>
+
+    <!-- 用于消息的监听的容器类SimpleMessageListenerContainer,监听队列 queues可以传多个 -->
+    <bean id="listenerContainer"
+          class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">
+        <property name="queues">
+            <list>
+                <ref bean="queue"></ref>
+                <!-- 3、<ref bean="queue1"></ref> -->
+            </list>
+        </property>
+        <property name="connectionFactory" ref="mqconnectionFactory"></property>
+        <property name="messageListener" ref="messageListenerAdapter"></property>
+    </bean>
+
     <!-- 配置数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!-- 配置连接池属性 -->
