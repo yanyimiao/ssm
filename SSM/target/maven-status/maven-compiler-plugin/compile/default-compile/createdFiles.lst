@@ -5,8 +5,6 @@ com\entity\DailyEntityQueryInfo.class
 com\dao\DailyMapper.class
 com\dao\JdbcDao.class
 com\service\DailyService.class
-com\util\rabbit\RabbitMQ.class
 com\controller\DailyController.class
 com\service\rabbitmq\MqProducer.class
-com\util\rabbit\RabbitMessage.class
 com\dao\impl\JdbcDaoImpl.class

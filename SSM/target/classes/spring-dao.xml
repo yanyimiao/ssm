@@ -4,7 +4,7 @@
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
@@ -14,8 +14,7 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/rabbit
-    http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd
-">
+    http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- 配置相关的properties-->
     <bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -27,17 +26,7 @@
         </property>
     </bean>
 
-    <!--rabbitmq-->
-    <rabbit:connection-factory id="mqconnectionFactory" host="${mq.host}" port="${mq.port}"
-                               username="${mq.username}" password="${mq.password}"/>
 
-    <bean id="rabbitAdmin"  class="org.springframework.amqp.rabbit.core.RabbitAdmin">
-        <constructor-arg ref="mqconnectionFactory" />
-    </bean>
-
-    <bean class="org.springframework.amqp.rabbit.core.RabbitTemplate" id="rabbitTemplate">
-        <constructor-arg ref="mqconnectionFactory"/>
-    </bean>
     <!-- 配置数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!-- 配置连接池属性 -->

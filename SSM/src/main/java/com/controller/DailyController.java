@@ -19,7 +19,7 @@ public class DailyController {
 
     @RequestMapping("/or")
     @ResponseBody
-    public Object query(){
+    public Object query(String name){
         DailyEntityQueryInfo dailyEntityQueryInfo = new DailyEntityQueryInfo();
         List<DailyEntity> list = dailyService.query(dailyEntityQueryInfo);
         return JSON.parseArray(JSON.toJSONString(list));

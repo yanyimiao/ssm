@@ -27,8 +27,6 @@ a
 1src/main/java/com/controller/DailyController.java,7\a\7a8bbd8a025bf0ab0900f77ee081db3cd5cae898
 Z
 *src/main/webapp/WEB-INF/spring-servlet.xml,2\7\27d1ffb6fc31b5d30d8c3569fb69477b2ea37e1b
-7
-SSM.iml,3\e\3e2b275fdfef359503e4482dceac19f726248f05
 Q
 !src/main/resources/spring-mvc.xml,7\b\7b89a588c4f8a80d8bb2abab941f8087edf2c8aa
 [
@@ -59,9 +57,8 @@ b
 2src/main/java/com/service/rabbitmq/MqProducer.java,d\8\d8c048268a80e39754cfe9fe7caa4f5ef6f1f2a2
 _
 /src/main/resources/properties/rabbit.properties,f\f\ffbf135756aba8d98b7f76b2d28337895dbd7053
-[
-+src/main/java/com/util/rabbit/RabbitMQ.java,8\f\8fc986839413f173447640e5da63c8129e491388
-`
-0src/main/java/com/util/rabbit/RabbitMessage.java,8\3\83c934d31c3679db69febbab9f0d95b8e1489615
 X
 (src/test/java/com/rabbit/RabbitTest.java,1\6\1616e8a8ac3625d793409e3f985c50b25a4445ee
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

@@ -26,18 +26,6 @@
         </property>
     </bean>
 
-    <!-- 用于消息的监听的容器类SimpleMessageListenerContainer,监听队列 queues可以传多个 -->
-    <bean id="listenerContainer"
-          class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">
-        <property name="queues">
-            <list>
-                <ref bean="queue"></ref>
-                <!-- 3、<ref bean="queue1"></ref> -->
-            </list>
-        </property>
-        <property name="connectionFactory" ref="mqconnectionFactory"></property>
-        <property name="messageListener" ref="messageListenerAdapter"></property>
-    </bean>
 
     <!-- 配置数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
